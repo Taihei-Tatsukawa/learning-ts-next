@@ -21,7 +21,7 @@ export type SigninPrarms = {
  * @returns ログインユーザー
  */
 const signin = async (context: ApiContext, params: SigninPrarms): Promise<User> => {
-  return await fetcher(`${context.apiRootUrl.replace(/\/$/, "")}/auth/signin`, {
+  return await fetcher(`${context.apiRootUrl.replace(/\/$/g, "")}/auth/signin`, {
     method: "POST",
     headers: {
       Accept: "application/json",

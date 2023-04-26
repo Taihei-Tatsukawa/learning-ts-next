@@ -27,7 +27,7 @@ const getUser = async (context: ApiContext, { id }: GetUserParams): Promise<User
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
    */
-  return await fetcher(`${context.apiRootUrl.replace(/\/$/, "")}/users/${id}`, {
+  return await fetcher(`${context.apiRootUrl.replace(/\/$/g, "")}/users/${id}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
