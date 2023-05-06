@@ -1,87 +1,69 @@
-import { Meta, StoryObj } from "@storybook/react";
-import Button from ".";
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import Button from './index'
 
-const meta: Meta<typeof Button> = {
-  title: "Atoms/Button",
-  component: Button,
-  tags: ["autodocs"],
+export default {
+  title: 'Atoms/Button',
   argTypes: {
     variant: {
-      options: ["primary", "secondary"],
-      control: { type: "radio" },
-      defaultValue: "primary",
-      description: "ボタンバリアント",
+      options: ['primary', 'secondary'],
+      control: { type: 'radio' },
+      defaultValue: 'primary',
+      // docsに表示する内容を設定
+      description: 'ボタンバリアント',
       table: {
-        type: {
-          summary: "primary | secondary",
-        },
-        defaultValue: {
-          summary: "primary",
-        },
+        type: { summary: 'primary | secondary' },
+        defaultValue: { summary: 'primary' },
       },
     },
     children: {
-      control: { type: "text" },
-      defaultValue: "Button",
-      description: "ボタンテキスト",
+      control: { type: 'text' },
+      defaultValue: 'Button',
+      description: 'ボタンテキスト',
       table: {
-        type: { summary: "string" },
+        type: { summary: 'string' },
       },
     },
     disabled: {
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
       defaultValue: false,
-      description: "Disabledフラグ",
+      description: 'Disabledフラグ',
       table: {
-        type: { summary: "boolean" },
+        type: { summary: 'boolean' },
       },
     },
     width: {
-      control: { type: "number" },
-      defaultValue: "横幅",
+      control: { type: 'number' },
+      description: 'ボタンの横幅',
       table: {
-        type: { summary: "number" },
+        type: { summary: 'number' },
       },
     },
     height: {
-      control: { type: "number" },
-      description: "縦幅",
+      control: { type: 'number' },
+      description: 'ボタンの縦幅',
       table: {
-        type: { summary: "number" },
+        type: { summary: 'number' },
       },
     },
     onClick: {
-      description: "onClickイベントハンドラ",
+      description: 'onClickイベントハンドラ',
       table: {
-        type: { summary: "function" },
+        type: { summary: 'function' },
       },
     },
   },
-};
+} as ComponentMeta<typeof Button>
 
-export default meta;
-type Story = StoryObj<typeof Button>;
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
-// プライマリボタン
-export const Primary: Story = {
-  args: {
-    variant: "primary",
-    children: "Primary Button",
-  },
-};
+// Primaryボタン
+export const Primary = Template.bind({})
+Primary.args = { variant: 'primary', children: 'Primary Button' }
 
-// セカンダリボタン
-export const Secondary: Story = {
-  args: {
-    variant: "secondary",
-    children: "Secondary Button",
-  },
-};
+// Secondaryボタン
+export const Secondary = Template.bind({})
+Secondary.args = { variant: 'secondary', children: 'Secondary Button' }
 
-// 無効化ボタン
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-    children: "Disabled Button",
-  },
-};
+// Disabledボタン
+export const Disabled = Template.bind({})
+Disabled.args = { disabled: true, children: 'Disabled Button' }
